@@ -1,0 +1,119 @@
+using System;
+
+namespace Week_3_Activity_ISM4300
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine().ToUpper().Split(" ");
+            //long variable to hold 'n' number of hands in play - given by first character entered
+            //char variable to hold 'b' the dominant suit, given by the second character entered
+            long n = Int64.Parse(input[0]);
+            char b = input[1][0];
+
+            int points = 0;
+            //use i to iterate through array, then increment
+            for (int i = 0; i < (n * 4); i++)
+            {
+                //read card from console input and store in character array
+                char[] card = Console.ReadLine().ToUpper().ToCharArray();
+                //char variables to hold card suits and descriptions from card array input
+                char description = card[0];
+                char suit = card[1];
+
+                if (suit == b)
+                {
+                    //logic when card has dominant suit
+                    if (description == 'A')
+                    {
+                        points = points + 11;
+                    }
+                    else if (description == 'K')
+                    {
+                        points = points + 4;
+                    }
+                    else if (description == 'Q')
+                    {
+                        points = points + 3;
+                    }
+                    else if (description == 'J')
+                    {
+                        points = points + 20;
+                    }
+                    else if (description == 'T')
+                    {
+                        points = points + 10;
+                    }
+                    else if (description == '9')
+                    {
+                        points = points + 14;
+                    }
+                    else if (description == '8')
+                    {
+                        points = points + 0;
+                    }
+                    else if (description == '7')
+                    {
+                        points = points + 0;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+
+                else if(suit != b)
+                {
+                    //logic when card does not have dominant suit
+                    if (description == 'A')
+                    {
+                        points = points + 11;
+                    }
+                    else if (description == 'K')
+                    {
+                        points = points + 4;
+                    }
+                    else if (description =='Q')
+                    {
+                        points = points + 3;
+                    }
+                    else if (description == 'J')
+                    {
+                        points = points + 2;
+                    }
+                    else if (description == 'T')
+                    {
+                        points = points + 10;
+                    }
+                    else if (description == '9')
+                    {
+                        points = points + 0;
+                    }
+                    else if (description == '8')
+                    {
+                        points = points + 0;
+                    }
+                    else if (description =='7')
+                    {
+                        points = points + 0;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    continue;
+                }
+
+            }
+            //output total of points to console
+            Console.WriteLine(points);
+
+            
+        }// end main
+    }
+    //end class
+}//end namespace
